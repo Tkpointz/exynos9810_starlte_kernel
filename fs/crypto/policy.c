@@ -64,6 +64,9 @@ int fscrypt_ioctl_set_policy(struct file *filp, const void __user *arg)
 	if (copy_from_user(&policy, arg, sizeof(policy)))
 		return -EFAULT;
 
+	if (copy_from_user(&policy, arg, sizeof(policy)))
+		return -EFAULT;
+
 	if (!inode_owner_or_capable(inode))
 		return -EACCES;
 

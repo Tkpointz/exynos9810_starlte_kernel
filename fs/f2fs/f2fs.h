@@ -3619,6 +3619,7 @@ static inline bool f2fs_may_encrypt(struct inode *inode)
 #endif
 }
 
+<<<<<<< HEAD
 static inline int block_unaligned_IO(struct inode *inode,
 				struct kiocb *iocb, struct iov_iter *iter)
 {
