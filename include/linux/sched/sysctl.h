@@ -93,6 +93,7 @@ extern unsigned int sysctl_rt_boost_threshold;
 extern unsigned int sysctl_sched_restrict_cluster_spill;
 #endif
 
+extern int sysctl_sched_rr_timeslice;
 extern int sched_rr_timeslice;
 
 extern int sched_rr_handler(struct ctl_table *table, int write,
