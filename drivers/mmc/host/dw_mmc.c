@@ -2441,6 +2441,7 @@ static void dw_mci_tasklet_func(unsigned long priv)
 				dw_mci_fifo_reset(host->dev, host);
 				dw_mci_stop_dma(host);
 				send_stop_abort(host, data);
+				dw_mci_stop_dma(host);
 				state = STATE_SENDING_STOP;
 				dw_mci_debug_req_log(host,
 						host->mrq,
