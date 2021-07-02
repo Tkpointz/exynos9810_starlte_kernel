@@ -284,7 +284,7 @@ void tcp_v4_mtu_reduced(struct sock *sk)
 
 	if ((1 << sk->sk_state) & (TCPF_LISTEN | TCPF_CLOSE))
 		return;
-	mtu = tcp_sk(sk)->mtu_info;
+	mtu = READ_ONCE(tcp_sk(sk)->mtu_info);
 	dst = inet_csk_update_pmtu(sk, mtu);
 	if (!dst)
 		return;
@@ -474,6 +474,7 @@ void tcp_v4_err(struct sk_buff *icmp_skb, u32 info)
 #ifdef CONFIG_MPTCP
 			if (!sock_owned_by_user(meta_sk)) {
 #else
+			WRITE_ONCE(tp->mtu_info, info);
 			if (!sock_owned_by_user(sk)) {
 #endif
 				tcp_v4_mtu_reduced(sk);
